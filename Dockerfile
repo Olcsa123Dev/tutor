@@ -3,9 +3,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y tmate tzdata expect python3 && \
-    ln -fs /usr/share/zoneinfo/Asia/Kathmandu /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata && \
+    apt-get install -y ttyd bash python3 curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
