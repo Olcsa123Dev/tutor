@@ -2,6 +2,9 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
+PORT=${PORT:-10000}
+python3 -m http.server $PORT &
+
 tmate -S /tmp/tmate.sock new-session -d
 
 echo "Várkozás a tmate linkekre..."
@@ -14,9 +17,6 @@ echo ""
 echo "Web:"
 tmate -S /tmp/tmate.sock display -p '#{tmate_web}'
 echo "---------------------------"
-
-PORT=${PORT:-10000}
-python3 -m http.server $PORT &
 
 while true; do
   tmate -S /tmp/tmate.sock send-keys "echo 'w: $(date)'" Enter
